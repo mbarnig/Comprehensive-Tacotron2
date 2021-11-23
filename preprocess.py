@@ -1,7 +1,7 @@
 import argparse
 
 from utils.tools import get_configs_of
-from preprocessor import ljspeech, vctk
+from preprocessor import ljspeech, vctk, marylux
 
 
 def main(config):
@@ -9,6 +9,8 @@ def main(config):
         preprocessor = ljspeech.Preprocessor(config)
     if "VCTK" in config["dataset"]:
         preprocessor = vctk.Preprocessor(config)
+    if "Marylux" in config["dataset"]:
+        preprocessor = marylux.Preprocessor(config)
 
     preprocessor.build_from_path()
 
