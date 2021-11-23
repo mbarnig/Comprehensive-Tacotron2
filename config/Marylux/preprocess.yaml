@@ -1,0 +1,28 @@
+dataset: "Marylux"
+
+path:
+  corpus_path: "/home/mbarnig/myTTS-Project/datasets/Marylux"
+  preprocessed_path: "/home/mbarnig/compre-taco2-mb/Comprehensive-Tacotron2/preprocessed_data/Marylux"
+
+preprocessing:
+  sanity_check: False # if True, then preprocess a single data and quit
+  val_size: 512
+  text:
+    text_cleaners: ["transliteration_cleaners"]
+    language: "en"
+  audio:
+    sampling_rate: 22050
+    max_wav_value: 32768.0
+    skip_len: 14848
+    trim_top_db: 23
+    silence_audio_size: 5
+    pre_emphasis: False
+  stft:
+    filter_length: 1024
+    hop_length: 256
+    win_length: 1024
+  mel:
+    n_mel_channels: 80
+    mel_fmin: 0
+    mel_fmax: 8000 # please set to 8000 for HiFi-GAN vocoder, set to null for MelGAN vocoder
+    normalize: False
