@@ -88,3 +88,55 @@ def english_cleaners(text):
     text = expand_abbreviations(text)
     text = collapse_whitespace(text)
     return text
+    
+def text2phone_cleaners(text):
+    phonemizer_args = {
+        "remove_stress": True,
+        "ipa_minor_breaks": False,
+        "ipa_major_breaks": False,
+    }
+    
+    ph_list = gruut.text_to_phonemes(
+        text,
+        lang="en",
+        return_format="word_phonemes",
+        phonemizer_args=phonemizer_args,
+    )
+    
+    # Join and re-split to break apart diphtongs, suprasegmentals, etc.
+    ph_words = ["|".join(word_phonemes) for word_phonemes in ph_list]
+    ph = "| ".join(ph_words)
+    
+    return ph
+    
+def phone2ids_cleaners(text, inventory):
+    my_phones = text2phone_cleaners(text)
+    # print("*** phones & inventory ***")
+    # print(my_phones)
+    # print(type(my_phones))
+    # print(inventory)
+    # print(type(inventory))
+    my_list = list(inventory)    
+    # print(my_list)
+    # print(type(my_list))
+    phoneme = ""
+    my_sequence = []
+    my_ids = []
+    for element in my_phones:
+        # print(element)
+        if element != "|" and element != " " :
+           phoneme += element
+        elif element == " " :
+           # this is silence
+           my_sequence.append(" ")
+           my_ids.append(0)
+        else :
+           # print(phoneme)
+           my_sequence.append(phoneme)
+           my_id = my_list.index(phoneme)
+           my_ids.append(my_id)
+           phoneme = ""
+    print(my_sequence)
+    print(my_ids)
+    return my_ids
+    
