@@ -1,8 +1,8 @@
 dataset: "Marylux"
 
 path:
-  corpus_path: "/home/mbarnig/myTTS-Project/datasets/Marylux"
-  preprocessed_path: "/home/mbarnig/compre-taco2-mb/Comprehensive-Tacotron2/preprocessed_data/Marylux"
+  corpus_path: "/home/mbarnig/MARYLUX"
+  preprocessed_path: "/home/mbarnig/COMPRE-TACO2/Comprehensive-Tacotron2/preprocessed_data/Marylux"
 
 preprocessing:
   sanity_check: False # if True, then preprocess a single data and quit
