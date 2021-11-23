@@ -8,8 +8,8 @@ preprocessing:
   sanity_check: False # if True, then preprocess a single data and quit
   val_size: 512
   text:
-    text_cleaners: ["transliteration_cleaners"]
-    language: "en"
+    text_cleaners: ["donothing_cleaners"]
+    language: "lb"
   audio:
     sampling_rate: 22050
     max_wav_value: 32768.0
