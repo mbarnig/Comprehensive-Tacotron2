@@ -140,3 +140,5 @@ def phone2ids_cleaners(text, inventory):
     print(my_ids)
     return my_ids
     
+def donothing_cleaners(text):
+    return text
